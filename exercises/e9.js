@@ -11,9 +11,10 @@
  * The function must be exported
  */
 
-export function iterate(arg) {
+export function iterate(i) {
   // Your code goes here...
-  
+  console.log(i);
+  return i += 1;
 }
 
 /**
@@ -24,7 +25,7 @@ export function iterate(arg) {
 
 export function alwaysThrows() {
   // Your code goes here...
-
+  throw Error ('OH NOES');
 }
 
 /**
@@ -36,9 +37,13 @@ export function alwaysThrows() {
  * The function must be exported
  */
 
-export function onReject() {
+export function onReject(err) {
   // Your code goes here...
-
+  if (typeof err === 'object'){
+    console.log(err.message)
+  } else {
+    console.log(err)
+  }
 }
 
 /**
@@ -63,9 +68,19 @@ export function onReject() {
  */
 
 // Your code goes here...
-export const promise;
-
-
+export const promise =
+  Promise.resolve(iterate(1))
+    .then((i) => iterate(i))
+    .then((i) => iterate(i))
+    .then((i) => iterate(i))
+    .then((i) => iterate(i))
+    .then(() => alwaysThrows())
+    .then((i) => iterate(i))
+    .then((i) => iterate(i))
+    .then((i) => iterate(i))
+    .then((i) => iterate(i))
+    .then((i) => iterate(i))
+    .catch((err) => onReject(err));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-9"
