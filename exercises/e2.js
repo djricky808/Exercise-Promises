@@ -18,12 +18,13 @@
 export const getPromise = (bool) => {
   // Your code goes here...
   return new Promise((resolve, reject) => {
-  if (bool) {
-    resolve('The PROMISE was RESOLVED');
-  } else {
-    reject('The PROMISE was REJECTED');
+    if (bool) {
+      resolve('The PROMISE was RESOLVED');
+    } else {
+      reject('The PROMISE was REJECTED');
+    }
   }
-})};
+)};
 
 /**
  * Create a handlePromise function that follows:
@@ -41,7 +42,7 @@ export const handlePromise = (promise) => {
 
   return promise.then(
     onFulfilled,
-    onRejected,
+    onRejected
   );
 }
 

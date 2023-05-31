@@ -55,7 +55,7 @@ export const getData = (url) => fetch(url);
 export const result = getData(usersUrl)
   .then((res) => res.json())
   .then(data => { 
-    console.log(getLoginList(data))
+    console.log(getLoginList(data));
     return getLoginList(data);
   })
 
